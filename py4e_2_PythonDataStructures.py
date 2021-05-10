@@ -270,3 +270,64 @@ for line in fh:
     print(email[1]) #pull email
 
 print("There were", count, "lines in the file with From as the first word")
+
+###############################################################
+############### Chapter 9 - Dictionaries ######################
+###############################################################
+
+# Lists index their entries based on the postion in the list
+# Dictionariesa re like bages - no order
+
+purse = dict()
+purse['money'] = 12
+purse['candy'] = 3
+purse['tissues'] = 75
+print(purse)
+print(purse['candy'])
+purse['candy'] = purse['candy'] + 2
+print(purse)
+
+jjj = { 'chuck' : 1, 'fred' : 42, 'jan' : 100}
+print(jjj)
+ooo = { }
+print(ooo)
+
+# 9.2 Counting with Dictionaries
+
+ccc = dict()
+ccc['csev'] = 1
+ccc['cwen'] = 1
+print(ccc)
+ccc['cwen'] = ccc['cwen'] + 1
+print(ccc)
+'csev' in ccc
+
+counts = dict()
+names = ['csev', 'cwen', 'zqian', 'cwen']
+for name in names :
+    if name not in counts:
+        counts[name] = 1
+    else :
+        counts[name] = counts[name] + 1
+print(counts)
+
+# Get Method
+
+if name in counts:
+    x = counts[name]
+else :
+    x = 0
+
+x = counts.get(name, 0)
+print(x)
+
+# Simplified Counting with get()
+
+counts = dict()
+names = ['csev', 'cwen', 'zqian', 'cwen', 'csev']
+for name in names : 
+    counts[name] = counts.get(name, 0) + 1
+print(counts)
+
+# 9.3 Dictionaries and Files
+
