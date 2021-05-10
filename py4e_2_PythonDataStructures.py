@@ -331,3 +331,107 @@ print(counts)
 
 # 9.3 Dictionaries and Files
 
+# counting pattern
+
+counts = dict()
+print('Enter a line of text:')
+line = input('')
+words = line.split()
+print('Words:', words)
+
+print('Counting...')
+for word in words:
+    counts[word] = counts.get(word,0) + 1
+print('Counts', counts)
+
+# Definite Loops
+
+counts = { 'chuck' : 1, 'fred' : 42, 'jan' : 100}
+for key in counts: 
+    print(key, counts[key])
+
+jjj = { 'chuck' : 1, 'fred' : 42, 'jan' : 100}
+print(list(jjj))
+print(jjj.keys())
+print(jjj.values())
+print(jjj.items())
+
+jjj = { 'chuck' : 1, 'fred' : 42, 'jan' : 100}
+for aaa, bbb in jjj.items() :
+    print(aaa, bbb)
+
+# Dictionaries and files
+name = input('Enter file:')
+handle = open(name)
+
+# Count words
+counts = dict()
+for line in handle:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word,0) + 1
+
+# Determine largest word and count
+bigcount = None
+bigword = None
+for word,count in counts.items():
+    if bigcount is None or count > bigcount:
+        bigword = word  # remember word
+        bigcount = count    # remember count
+
+print(bigword, bigcount)
+
+# Chapter 9 Quiz
+
+#Q3 What would the following Python code print out?
+stuff = dict()
+print(stuff['candy'])
+
+#Q4 What would the following Python code print out?
+stuff = dict()
+print(stuff.get('candy',-1))
+
+#Q7 Which of the following lines of Python is equivalent to the following sequence 
+# of statements assuming that counts is a dictionary?
+
+if key in counts:
+    counts[key] = counts[key] + 1
+else:
+    counts[key] = 1
+
+counts[key] = counts.get(key,0) + 1
+
+# Assignment 9.4 Write a program to read through the mbox-short.txt and 
+# figure out who has sent the greatest number of mail messages. The program 
+# looks for 'From ' lines and takes the second word of those lines as the person
+#  who sent the mail. The program creates a Python dictionary that maps the sender's 
+#  mail address to a count of the number of times they appear in the file. After 
+#  the dictionary is produced, the program reads through the dictionary using a
+#   maximum loop to find the most prolific committer
+
+#from pathlib import Path
+#data_folder = Path("../GitHub/coursera/datasets")
+
+fname = input("Enter file:")
+if len(fname) < 1 : name = "mbox-short.txt"
+hand = open(fname)
+
+lst = list()
+
+for line in hand:
+    if not line.startswith("From:"): continue
+    line = line.split()
+    lst.append(line[1])
+
+counts = dict()
+for word in lst:
+    counts[word] = counts.get(word,0) + 1
+
+bigcount = None
+bigword = None
+for word,count in counts.items(): 
+    if bigcount is None or count > bigcount:
+        bigcount = count
+        bigword = word
+
+print (bigword,bigcount)
